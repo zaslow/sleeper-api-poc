@@ -1,0 +1,13 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_USER=sleeperapp
+      - MYSQL_PASSWORD=ffl2019
+      - MYSQL_DATABASE=fantasy_football
+      - MYSQL_ROOT_PASSWORD=root

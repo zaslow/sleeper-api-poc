@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "data.interval.refresh",
+    "type": "int",
+    "description": "Interval in minutes for frequency data should be refreshed"
+  },
+  {
+    "name": "data.refresh.force",
+    "type": "boolean",
+    "description": "Used to force a data refresh within set interval"
+  },
+  {
+    "name": "sleeper.api.domain",
+    "type": "java.lang.String",
+    "description": "Domain URL for the Sleeper REST API"
+  }
+]}
