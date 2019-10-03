@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 
 import com.app.sleeperapipoc.Application;
+import com.app.sleeperapipoc.aspects.RepositoryLogAspect;
 import com.app.sleeperapipoc.controllers.PlayerController;
 import com.app.sleeperapipoc.controllers.TrendingPlayerController;
 import com.app.sleeperapipoc.models.TrendingIdCount;
@@ -20,6 +22,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 
+@EnableAspectJAutoProxy(proxyTargetClass=true)
 @Configuration
 @PropertySource("classpath:api.properties")
 public class ApiConfiguration {
@@ -40,6 +43,11 @@ public class ApiConfiguration {
 		return new PlayerController(sleeperApiDomain);
 	}
 	
+	@Bean
+	public RepositoryLogAspect restLogAspect() {
+		return new RepositoryLogAspect();
+	}
+
 	@Bean
 	public TrendingPlayerController trendingPlayerController() {
 		return new TrendingPlayerController(sleeperApiDomain);
